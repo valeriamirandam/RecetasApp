@@ -1,24 +1,12 @@
 # README
+Se debe instalar ruby y rails anteriormente para ejecutar el proyecto.
+Las versiones utilizadas corresponden a Ruby 3.1.2 y Rails 7.0.4.
+Para ejecutar la aplicación se debe realizar lo siguiente, dentro del directorio raiz del proyecto:
+* Realizar las migraciones con el comando $rails db:migrate 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ejecutar la semilla con el comando $rails db:seed
 
-Things you may want to cover:
+* Correr el servidor con el comando $rails s
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
+Realizar pruebas:
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
