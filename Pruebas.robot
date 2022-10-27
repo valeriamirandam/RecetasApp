@@ -43,7 +43,7 @@ Editar receta
     Validar edicion receta
 Eliminar receta
     Eliminar primera receta
-    Validad eliminacion receta
+    Validar eliminacion receta
     Cerrar navegador
 
 *** Keywords ***
