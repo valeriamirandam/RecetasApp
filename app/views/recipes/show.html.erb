@@ -2,10 +2,13 @@
 
 <%= render @recipe %>
 <% if @recipe.image.present?%>
-  <%= image_tag(@recipe.image,size: "200x200") %>
+  <center>
+  <%= image_tag(@recipe.image) %>
+  </center
 <% end %>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
-
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+<div>
+  <%= link_to "Editar Receta", edit_recipe_path(@recipe) %> |
+  <%= link_to "Volver a Recetas", recipes_path %>
 </div>
+<br>
+  <%= button_to "Eliminar Receta", @recipe, method: :delete %>

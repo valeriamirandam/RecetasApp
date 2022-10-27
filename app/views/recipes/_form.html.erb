@@ -12,26 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label :título, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :ingredients, style: "display: block" %>
+    <%= form.label :ingredientes, style: "display: block" %>
     <%= form.text_area :ingredients %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :instructions, style: "display: block" %>
+    <%= form.label :instrucciones, style: "display: block" %>
     <%= form.text_area :instructions %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :image, style: "display: block" %>
+    <%= form.label :url_Imagen, style: "display: block" %>
     <%= form.text_area :image %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Enviar" %>
   </div>
 <% end %>

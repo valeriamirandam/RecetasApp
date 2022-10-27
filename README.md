@@ -8,5 +8,7 @@ Para ejecutar la aplicación se debe realizar lo siguiente, dentro del directori
 
 * Correr el servidor con el comando $rails s
 
+* Abrir navegador en localhost:3000 para acceder a la aplicación
+
 Realizar pruebas:
 * How to run the test suite

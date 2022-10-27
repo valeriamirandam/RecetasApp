@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recipes</h1>
+<h1>Recetas</h1>
 
 <div id="recipes">
 <% if @recipes.size==0 %>
@@ -10,8 +10,8 @@
     <thead>
       <tr>
         <th>Receta</th>
-        <th></th>
-        <th></th>
+        <th>Ilustración</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +25,8 @@
             <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1200px-Imagen_no_disponible.svg.png",size: "90x90")%>
           <% end %></td>
           <td>
-            <%= button_to "Eliminar", recipe, method: :delete, data: { confirm: "¿Estás seguro de eliminar esta receta?" } %>
+            <%= button_to "Eliminar", recipe, form: { data: { turbo_confirm: "¿Estás seguro de eliminar esta receta?" }}, method: :delete %>
+            <%= link_to "Editar", edit_recipe_path(recipe) %>
           </td>
         </tr>
       <% end %>
