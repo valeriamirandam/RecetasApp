@@ -18,8 +18,10 @@ ${INGREDIENTS_FORM}    name=recipe[ingredients]
 ${INSTRUCTIONS_FORM}    name=recipe[instructions]
 ${URL_FORM}    name=recipe[image]
 ${BTN_SEND}    name=commit
+${BTN_DELETE_FIRST_RECIPE}   xpath=//tbody/tr[1]/td[last()]/a[contains(text(), "Eliminar")]
 ${CONFIRMATION_MESSAGE_CREATE}   xpath=//p[contains(text(),"Receta creada correctamente")]
 ${CONFIRMATION_MESSAGE_EDIT}    xpath=//p[contains(text(),"Receta actualizada correctamente")]
+${CONFIRMATION_MESSAGE_DELETE}  xpath=//p[contains(text(), "Receta eliminada correctamente")]
 ${message_ok}   "Test Passed"
 ${message_error_view}   "Test Failed. couldn't visualize the recipe."
 ${message_error_create}   "Test Failed. The recipe was not created."
@@ -39,6 +41,9 @@ Editar receta
     Seleccionar editar ultima receta
     Ingresar datos edicion receta
     Validar edicion receta
+Eliminar receta
+    Eliminar primera receta
+    Validad eliminacion receta
     Cerrar navegador
 
 *** Keywords ***
@@ -90,5 +95,13 @@ Ingresar datos edicion receta
 Validar edicion receta
   ${result}=  Run Keyword And Return Status  Page Should Contain Element  ${CONFIRMATION_MESSAGE_EDIT}
   Run Keyword And Continue On Failure    Page Should Contain Element  ${CONFIRMATION_MESSAGE_EDIT}
+  Run Keyword If  ${result}  Log  ${message_ok}
+  ...  ELSE  Log  ${message_error_edit}
+Eliminar primera receta
+  Click Element   ${BTN_DELETE_FIRST_RECIPE}
+  Sleep 2
+Validar eliminacion receta 
+  ${result}= Run Keyword And Return Status  Page Should Contain Element  $CONFIRMATION_MESSAGE_DELETE}
+  Run Keyword And Continue On Failure       Page Should Contain Element  $CONFIRMATION_MESSAGE_DELETE}
   Run Keyword If  ${result}  Log  ${message_ok}
   ...  ELSE  Log  ${message_error_edit}
