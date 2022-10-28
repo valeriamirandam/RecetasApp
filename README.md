@@ -26,5 +26,6 @@ Para ejecutar la aplicación se debe realizar lo siguiente, dentro del directori
 
 Para ejecutar las pruebas se debe correr alguno de los siguientes comandos, dentro del directorio raiz del proyecto:
 
+* $robot Pruebas.robot
 * $robot -d results Pruebas.robot
 * $python -m robot -d results Pruebas.robot

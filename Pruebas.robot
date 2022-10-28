@@ -18,7 +18,7 @@ ${INGREDIENTS_FORM}    name=recipe[ingredients]
 ${INSTRUCTIONS_FORM}    name=recipe[instructions]
 ${URL_FORM}    name=recipe[image]
 ${BTN_SEND}    name=commit
-${BTN_DELETE_FIRST_RECIPE}   xpath=//tbody/tr[1]/td[last()]/a[contains(text(), "Eliminar")]
+${BTN_DELETE_FIRST_RECIPE}   xpath=//tbody/tr[1]/td[last()]/form/button
 ${CONFIRMATION_MESSAGE_CREATE}   xpath=//p[contains(text(),"Receta creada correctamente")]
 ${CONFIRMATION_MESSAGE_EDIT}    xpath=//p[contains(text(),"Receta actualizada correctamente")]
 ${CONFIRMATION_MESSAGE_DELETE}  xpath=//p[contains(text(), "Receta eliminada correctamente")]
@@ -50,58 +50,56 @@ Eliminar receta
 Abrir pagina principal
   Open Browser   ${URL}   ${BROWSER}
   Maximize Browser Window
-  Sleep  2
+  Sleep  3
 Cerrar navegador
   Close Browser
 Seleccionar primera receta
   Click Element    ${FIRST_RECIPE}
-  Sleep    2
+  Sleep    3
 Seleccionar ultima receta
   Click Element    ${LAST_RECIPE}
-  Sleep    2
+  Sleep    3
 Validar informacion receta
   ${result1}=  Run Keyword And Return Status  Page Should Contain Element  ${TITLE}
   ${result2}=  Run Keyword And Return Status  Page Should Contain Element  ${INGREDIENTS}
   ${result3}=  Run Keyword And Return Status  Page Should Contain Element  ${INSTRUCTIONS}
-  Run Keyword And Continue On Failure    Page Should Contain Element  ${TITLE}
-  Run Keyword And Continue On Failure    Page Should Contain Element  ${INGREDIENTS}
-  Run Keyword And Continue On Failure    Page Should Contain Element  ${INSTRUCTIONS}
   Run Keyword If  ${result1} and ${result2} and ${result3}  Log  ${message_ok}
   ...  ELSE  Log  ${message_error_view}
 Volver a lista de recetas
   Click Element    ${BTN_VOLVER_LISTA_RECETAS}
-  Sleep  2
+  Sleep  3
 Seleccionar opcion agregar receta
   Click Element    ${BTN_CREAR}
-  Sleep  2
+  Sleep  3
 Ingresar datos creacion receta
   Input Text    ${TITLE_FORM}    Título 1
   Input Text    ${INGREDIENTS_FORM}    Ingredientes
   Input Text    ${INSTRUCTIONS_FORM}    Paso 1
   Click Element    ${BTN_SEND}
-  Sleep  2
+  Sleep  3
 Validar creacion receta
   ${result}=  Run Keyword And Return Status  Page Should Contain Element  ${CONFIRMATION_MESSAGE_CREATE}
   Run Keyword And Continue On Failure    Page Should Contain Element  ${CONFIRMATION_MESSAGE_CREATE}
   Run Keyword If  ${result}  Log  ${message_ok}
-  ...  ELSE  Log  ${message_error_create}
+  ...  ELSE  Volver a lista de recetas
 Seleccionar editar ultima receta
   Click Element    ${BTN_EDIT_LAST_RECIPE}
-  Sleep  2
+  Sleep  3
 Ingresar datos edicion receta
   Input Text    ${TITLE_FORM}    Título 2
+  Input Text    ${URL_FORM}    https://cdn.sanity.io/images/jsdrzfkj/production-esmx/5e2316cc629ede9cd6646163efeafc5486161751-6240x4160.jpg?w=800&h=533&fit=crop
   Click Element    ${BTN_SEND}
-  Sleep  2
+  Sleep  3
 Validar edicion receta
   ${result}=  Run Keyword And Return Status  Page Should Contain Element  ${CONFIRMATION_MESSAGE_EDIT}
   Run Keyword And Continue On Failure    Page Should Contain Element  ${CONFIRMATION_MESSAGE_EDIT}
   Run Keyword If  ${result}  Log  ${message_ok}
-  ...  ELSE  Log  ${message_error_edit}
+  ...  ELSE  Volver a lista de recetas
 Eliminar primera receta
   Click Element   ${BTN_DELETE_FIRST_RECIPE}
-  Sleep 2
+  Sleep  3
 Validar eliminacion receta 
-  ${result}= Run Keyword And Return Status  Page Should Contain Element  $CONFIRMATION_MESSAGE_DELETE}
-  Run Keyword And Continue On Failure       Page Should Contain Element  $CONFIRMATION_MESSAGE_DELETE}
+  ${result}=  Run Keyword And Return Status  Page Should Contain Element  ${CONFIRMATION_MESSAGE_DELETE}
+  Run Keyword And Continue On Failure       Page Should Contain Element  ${CONFIRMATION_MESSAGE_DELETE}
   Run Keyword If  ${result}  Log  ${message_ok}
-  ...  ELSE  Log  ${message_error_edit}
+  ...  ELSE  Volver a lista de recetas
